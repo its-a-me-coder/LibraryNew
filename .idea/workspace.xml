@@ -1,14 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="12792343-a0d7-43df-9077-2d2d87dd2661" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/LibraryGUI/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/LibraryMainApp/Books/BooksSQL/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/LibraryMainApp/Books/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/LibraryMainApp/User/UsersSQL/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/LibraryMainApp/User/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/LibraryMainApp/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
+    <list default="true" id="a585907d-eace-422b-b7bb-5eecf404f34c" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
