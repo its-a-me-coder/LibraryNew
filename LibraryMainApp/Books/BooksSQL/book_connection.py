@@ -12,7 +12,7 @@ c = conn.cursor()
 def update_available_quantity(field_values):
     c.execute('''UPDATE Book SET Book_ID =?,Available_Copies = ?  WHERE  Book_ID = ?''',(field_values[0],field_values[2],field_values[1]))
     conn.commit()
-    c.execute('''SELECT * FROM Book ORDER BY Book_ID''')
+
 
 
 
