@@ -45,8 +45,6 @@ def getByAuthor(Aut):
     return tuple(book_author.fetchall())
 
 
-
-
 def Update_Column(Root_ID, id,Name, Total, Available, genre, Aname, Ed):
     c.execute('''UPDATE Book SET Book_ID =?,Book_Name =?, Total_Copies=?, Available_Copies = ?,Genre=?,Author_Name=?,Edition=?  WHERE  Book_ID = ?''',(id,Name, Total, Available, genre, Aname, Ed, Root_ID))
     conn.commit()
