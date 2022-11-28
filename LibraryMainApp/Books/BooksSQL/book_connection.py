@@ -7,14 +7,9 @@ conn = sqlite3.connect("../../../library.db")
 c = conn.cursor()
 
 # get avalibility of the books
-def getavailbility():
-    c.execute("SELECT Book_Name,Available_Copies FROM book")
+def getavailbility(book_id):
+    c.execute("SELECT Available_Copies FROM book WHERE Book_ID=?",(book_id,))
     rec = c.fetchall()
-    ava = [x[1] for x in rec]
-    book = [x[0] for x in rec]
-    for i in range(len(book)-1):
-        print(f" {book[i]}, availability : {ava[i]}")
+    return tuple(rec)
 
-
-getavailbility()
 
