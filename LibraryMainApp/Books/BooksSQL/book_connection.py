@@ -10,15 +10,14 @@ c = conn.cursor()
 def getByAuthor():
     Aut = 'Britt Bennett'
     book_author=c.execute("SELECT Book_Name,Author_Name,Edition FROM Book WHERE Author_Name=?",(Aut,))
-    print(book_author.fetchall())
+    return tuple(book_author.fetchall())
 
 
-getByAuthor()
+
 
 def Update_Column():
     update_column=c.execute("ALTER TABLE Book ADD COLUMN phone VARCHAR(50)")
     book=c.execute("SELECT * FROM Book")
-    print(book.fetchall())
+    return(book.fetchall())
 
 
-Update_Column()
