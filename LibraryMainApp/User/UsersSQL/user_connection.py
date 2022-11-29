@@ -7,6 +7,16 @@ conn = sqlite3.connect("../../../library.db")
 c = conn.cursor()
 
 
+# Deletes a member using member id
+def delete_member(mem_id):
+    c.execute("DELETE FROM Members WHERE MembersId =?", (mem_id,))
+
+# Gives all the records of a particular book
+def history_book(book_id):
+    c.execute("SELECT * FROM Lending WHERE BookId=?", (book_id,))
+    return tuple(c.fetchall())
+
+
 # addition of members
 
 def add_members(Name, booklended, cont):
@@ -21,4 +31,5 @@ def add_members(Name, booklended, cont):
 def Update_Contact(MembersId, Contact_No):
     c.execute('''UPDATE Members SET Contact_No = ?  WHERE  MembersId = ?''', (Contact_No, MembersId))
     conn.commit()
+
 
