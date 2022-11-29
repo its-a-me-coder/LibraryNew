@@ -7,6 +7,13 @@ conn = sqlite3.connect("../../../library.db")
 c = conn.cursor()
 
 
+#get books lended to the user
+def getbooklended(MemId):
+    c.execute("SELECT Books_Lended FROM Members WHERE MembersId=?",(MemId,))
+    booklended = c.fetchall()
+    return tuple(booklended)
+
+
 # Deletes a member using member id
 def delete_member(mem_id):
     c.execute("DELETE FROM Members WHERE MembersId =?", (mem_id,))
@@ -31,5 +38,6 @@ def add_members(Name, booklended, cont):
 def Update_Contact(MembersId, Contact_No):
     c.execute('''UPDATE Members SET Contact_No = ?  WHERE  MembersId = ?''', (Contact_No, MembersId))
     conn.commit()
+
 
 
