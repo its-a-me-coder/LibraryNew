@@ -38,7 +38,7 @@ def update_total_quantity(bookid, total):
 
 def add_books(id,name,total,available,genre,author,edition):
     c.execute("""INSERT INTO BOOK (Book_ID, Book_Name, Total_Copies,Available_Copies, Genre, Author_Name, Edition)
-     VALUES(?,?,?,?,?,?,?, (id,name,total,available,genre,author,edition)""")
+     VALUES(?,?,?,?,?,?,?)""",(id,name,total,available,genre,author,edition))
 
 def getByAuthor(Aut):
     book_author=c.execute("SELECT Book_Name,Author_Name,Edition FROM Book WHERE Author_Name=?",(Aut,))

@@ -18,7 +18,6 @@ def add_members(Name, booklended, cont):
               (Name, booklended, cont, DateOfjoining))
 
     conn.commit()
-
 def Update_Contact(MembersId, Contact_No):
     c.execute('''UPDATE Members SET Contact_No = ?  WHERE  MembersId = ?''', (Contact_No, MembersId))
     conn.commit()
