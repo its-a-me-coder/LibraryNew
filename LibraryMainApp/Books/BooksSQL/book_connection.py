@@ -37,7 +37,7 @@ def update_total_quantity(bookid, total):
     conn.commit()
 
 def add_books(id,name,total,available,genre,author,edition):
-    c.execute("""INSERT INTO BOOK (Book_ID, Book_Name, Total_Copies,Available_Copies, Genre, Author_Name, Edition)
+    c.execute("""INSERT INTO Book (Book_ID, Book_Name, Total_Copies,Available_Copies, Genre, Author_Name, Edition)
      VALUES(?,?,?,?,?,?,?)""",(id,name,total,available,genre,author,edition))
 
 def getByAuthor(Aut):
