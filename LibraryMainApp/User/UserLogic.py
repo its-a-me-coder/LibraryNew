@@ -17,7 +17,6 @@ def show_books_borrowed():
     """This function shows the books borrowed by the user"""
     books = tuple(getByUserId(1))
     print(books)
-    return True
 
 
 def return_book(bookid):
@@ -35,3 +34,17 @@ def return_book(bookid):
         print("Book Returned")  # prints that the book  is returned
         print("Enter 1 to go back to the menu")
     return True
+
+def lending_book(bookid):
+    """ This function is for lending a book from the library """
+
+
+def Update_ContactNo(memberid, Contact_info):
+    """This function updates the information about the members"""
+    Update_Contact(memberid, Contact_info) # updates the new information into the previous one.
+    print("New Updates have been done!, The contact now is:",Contact_info)
+    return True
+
+
+
+
