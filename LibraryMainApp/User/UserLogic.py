@@ -16,6 +16,7 @@ def login():
         return newUserId[0]
 
 
+
 USERID = 1  # This is the user id that we get from the login
 "\" Got this from the user login page "
 from tabulate import tabulate
@@ -75,6 +76,31 @@ def lendBook(bookid):
         print("Book issued with lending id",lendid[0])  # prints that the book  is returned
         print("Enter 1 to go back to the menu")
     return True
+
+
+# Adding books to library
+
+def Add_Book_to_Library():
+    name = input("Enter the Name of the Book: ")
+    total = int(input("Enter total Number of Books: "))
+    available = int(input("Enter Number of books Available: "))
+    genre = input("Enter Genre: ")
+    author = input("Enter the Author Name: ")
+    edition = input("Enter the Edition: ")
+    add_books(name,total,available,genre,author,edition)
+
+# Updating the details of the books in the library
+
+def Update_Books_to_Library():
+    Root_ID = int(input("Enter the Root Id: "))
+    id = int(input("Enter the Book ID:"))
+    Name = input("Enter the name of the Book: ")
+    Total = int(input("Enter the total Number of Books: "))
+    Available = int(input("Enter the available number of Books: "))
+    genre = input("Enter the Genre: ")
+    Aname = input("Enter the Author Name: ")
+    Ed = input("Enter the Edition: ")
+    Update_Column(Root_ID,id,Name,Total,Available,genre,Aname,Ed)
 
 
 
