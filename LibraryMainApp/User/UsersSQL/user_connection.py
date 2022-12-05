@@ -96,18 +96,5 @@ def Book_Issued(BookId, MemberId):
 
 def checkMember(user_id,user_name):
     '''checking member in table or not'''
-    return c.execute("SELECT MembersId FROM Members WHERE MembersId=? and `Member Name` =?", (user_id, user_name)).fetchone()
+    return cursor.execute("SELECT MembersId FROM Members WHERE MembersId=? and `Member Name` =?", (user_id, user_name)).fetchone()
 
-
-
-
-
-
-
-
-
-
-
-=======
-    return cursor.execute("SELECT LendId FROM Lending ORDER BY LendId DESC ").fetchone()
->>>>>>> QA
