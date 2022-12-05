@@ -4,7 +4,7 @@ conn = sqlite3.connect("../../Library.db")  # connect to database for testing pu
 
 # create a cursor/ pointer to the database
 cursor = conn.cursor()
-
+from datetime import date,timedelta
 
 def Update_Column(M_name, Books_lended, Contact_No, DateOfJoining, MembersId):
     """Update the column of the table"""
@@ -96,17 +96,12 @@ def delete_lent(LendId):
 # add a row to lend whenever a book is issued
 def Book_Issued(BookId, MemberId):
     """Add a row to lend whenever a book is issued"""
-    cursor.execute('SELECT date("now")')
-    x = cursor.fetchall()
-    a = x[0]
-    DateOfIssue = str(a[0])
-    cursor.execute('SELECT date("now","+10 days")')
-    y = cursor.fetchall()
-    b = y[0]
-    DateOfReturn = str(b[0])
+    IssuedDate = date.today()
+    DateOfIssue = IssuedDate.strftime("%d/%m/%Y")
+    ReturnDate = IssuedDate + timedelta(days=14)
     User_Issued_Book = cursor.execute(
         "INSERT OR IGNORE INTO Lending ( BookId, MemberId, DateOfIssue, DateOfReturn) VALUES(?,?,?,?) ",
-        (BookId, MemberId, DateOfIssue, DateOfReturn))
+        (BookId, MemberId, DateOfIssue, ReturnDate))
     conn.commit()
 
 
