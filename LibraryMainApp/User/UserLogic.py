@@ -63,9 +63,9 @@ def lendBook(bookid):
     return True
 
 
-# Adding books to library
 
 def Add_Book_to_Library():
+    """This function adds a book to the library"""
     name = input("Enter the Name of the Book: ")
     total = int(input("Enter total Number of Books: "))
     available = int(input("Enter Number of books Available: "))
@@ -74,9 +74,8 @@ def Add_Book_to_Library():
     edition = input("Enter the Edition: ")
     add_books(name,total,available,genre,author,edition)
 
-# Updating the details of the books in the library
-
 def Update_Books_to_Library():
+    """This function updates the books in the library"""
     Root_ID = int(input("Enter the Root Id: "))
     id = int(input("Enter the Book ID:"))
     Name = input("Enter the name of the Book: ")
