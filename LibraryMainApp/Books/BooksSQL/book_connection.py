@@ -33,7 +33,12 @@ def get_book_quantity(book_id):
 
 
 def update_available_quantity(bookid, available):
+    c.execute('''UPDATE Book SET Available_Copies = ?  WHERE  Book_ID = ?''',(bookid,available))
+
+
+def update_available_quantity(bookid, available):
     c.execute('''UPDATE Book SET Available_Copies = ?  WHERE  Book_ID = ?''', (available, bookid))
+
     conn.commit()
 
 
@@ -46,11 +51,10 @@ def update_total_quantity(bookid, total):
     c.execute('''UPDATE Book SET Total_Copies = ?  WHERE  Book_ID = ?''', (total, bookid))
     conn.commit()
 
-
 def add_books(id, name, total, available, genre, author, edition):
     c.execute("""INSERT INTO BOOK (Book_ID, Book_Name, Total_Copies,Available_Copies, Genre, Author_Name, Edition)
      VALUES(?,?,?,?,?,?,?)""", (id, name, total, available, genre, author, edition))
-
+    conn.commit()
 
 def getByAuthor(Aut):
     book_author = c.execute("SELECT Book_Name,Author_Name,Edition FROM Book WHERE Author_Name=?", (Aut,))

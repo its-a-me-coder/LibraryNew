@@ -1,7 +1,7 @@
 import sqlite3
 
-# connect to database for good purpose
 conn = sqlite3.connect("../../Library.db")  # connect to database for testing purpose
+
 # create a cursor/ pointer to the database
 cursor = conn.cursor()
 
@@ -22,7 +22,8 @@ def getByUserId(MemberId):
     return tuple(history)
 
 
-# get books lended to the user
+#get books lended to the user
+
 def getbooklended(MemId):
     cursor.execute("SELECT Books_Lended FROM Members WHERE MembersId=?", (MemId,))
     booklended = cursor.fetchall()
@@ -56,21 +57,19 @@ def history_book(book_id):
 
 # addition of members
 
-def add_members(Name, booklended, cont):
+
+def add_members(Name, contact):
     cursor.execute('SELECT date("now")')
     x = cursor.fetchall()
     DateOfjoining = str(x[0])
-
     cursor.execute("""INSERT INTO Members ('Member Name', Books_Lended,Contact_No, DateOfJoining) VALUES(?,?,?,?) """,
-                   (Name, booklended, cont, DateOfjoining))
-
+              (Name, 0, contact, DateOfjoining))
     conn.commit()
-
+    return cursor.execute("SELECT MembersId FROM Members ORDER BY MembersId DESC ").fetchone()
 
 def Update_Contact(MembersId, Contact_No):
     cursor.execute('''UPDATE Members SET Contact_No = ?  WHERE  MembersId = ?''', (Contact_No, MembersId))
     conn.commit()
-
 
 # get all the details of all the users
 def display_Details():
@@ -94,4 +93,8 @@ def Book_Issued(BookId, MemberId):
         "INSERT OR IGNORE INTO Lending ( BookId, MemberId, DateOfIssue, DateOfReturn) VALUES(?,?,?,?) ",
         (BookId, MemberId, DateOfIssue, DateOfReturn))
     conn.commit()
-    return cursor.execute("SELECT LendId FROM Lending ORDER BY LendId DESC ").fetchone()
+
+def checkMember(user_id,user_name):
+    '''checking member in table or not'''
+    return cursor.execute("SELECT MembersId FROM Members WHERE MembersId=? and `Member Name` =?", (user_id, user_name)).fetchone()
+
