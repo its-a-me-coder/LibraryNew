@@ -16,6 +16,7 @@ def Librarian():
         a=int(input("enter ur choice: "))
         if a==1:
             '''func to add book in library'''
+            Add_Book_to_Library()
             print("1")
 
         elif a==2:
@@ -31,6 +32,7 @@ def Librarian():
 
         elif a==4:
             '''update any book'''
+            Update_Books_to_Library()
             print("4")
 
         elif a==5:
