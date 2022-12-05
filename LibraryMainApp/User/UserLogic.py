@@ -45,6 +45,22 @@ def Update_ContactNo(memberid, Contact_info):
     print("New Updates have been done!, The contact now is:",Contact_info)
     return True
 
+# Try to lend a book from the library ( using id or name and check avail. )
+def lendBook(bookid):
+    book_current_available = int(get_book_quantity(bookid))  # checks the current available quantity of the book
+    user_books_lent = getbooklended(USERID)  # gets the amount of books lent by the user
+    check, LentID = checkif_lent(bookid, USERID)
+    if user_books_lent >= 3 or check == True:  # checks if the user has lent the book
+        print("You have reached the maximum books you can borrow or you have already lended this book")
+        return False
+    else:
+        updatebooklended(USERID, user_books_lent + 1)  # updates the amount of books lent by the user
+        update_available_quantity(bookid, book_current_available - 1)  # updates the available quantity of the book
+        lendid= Book_Issued(bookid,USERID)  # deletes the record of the book lent
+        print("Book issued with lending id",lendid[0])  # prints that the book  is returned
+        print("Enter 1 to go back to the menu")
+    return True
+
 
 
 

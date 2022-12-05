@@ -30,7 +30,7 @@ def getbooklended(MemId):
 
 
 def checkif_lent(BookId, MembersId):
-    LentID = cursor.execute("SELECT LendId FROM Lending WHERE BookId =? AND MemberId =?", (BookId, MembersId))
+    cursor.execute("SELECT LendId FROM Lending WHERE BookId =? AND MemberId =?", (BookId, MembersId))
     lent = cursor.fetchall()
     if lent == []:
         return (False,None)
@@ -81,7 +81,7 @@ def delete_lent(LendId):
     cursor.execute("DELETE FROM Lending WHERE LendId =?", (LendId,))
     conn.commit()
 # add a row to lend whenever a book is issued
-def Book_Issued(LendId, BookId, MemberId):
+def Book_Issued(BookId, MemberId):
     cursor.execute('SELECT date("now")')
     x = cursor.fetchall()
     a = x[0]
@@ -91,6 +91,7 @@ def Book_Issued(LendId, BookId, MemberId):
     b = y[0]
     DateOfReturn = str(b[0])
     User_Issued_Book = cursor.execute(
-        "INSERT OR IGNORE INTO Lending (LendId, BookId, MemberId, DateOfIssue, DateOfReturn) VALUES(?,?,?,?,?) ",
-        (LendId, BookId, MemberId, DateOfIssue, DateOfReturn))
+        "INSERT OR IGNORE INTO Lending ( BookId, MemberId, DateOfIssue, DateOfReturn) VALUES(?,?,?,?) ",
+        (BookId, MemberId, DateOfIssue, DateOfReturn))
     conn.commit()
+    return cursor.execute("SELECT LendId FROM Lending ORDER BY LendId DESC ").fetchone()
