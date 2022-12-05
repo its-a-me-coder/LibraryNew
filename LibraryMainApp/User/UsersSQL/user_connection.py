@@ -16,8 +16,6 @@ def getByUserId(MemberId):
     history = c.fetchall()
     return  tuple(history)
 
-
-
 #get books lended to the user
 def getbooklended(MemId):
     c.execute("SELECT Books_Lended FROM Members WHERE MembersId=?",(MemId,))
@@ -50,10 +48,6 @@ def Update_Contact(MembersId, Contact_No):
     c.execute('''UPDATE Members SET Contact_No = ?  WHERE  MembersId = ?''', (Contact_No, MembersId))
     conn.commit()
 
-
-
-
-
 # get all the details of all the users
 def display_Details():
     details = c.execute("SELECT * from USER")
@@ -73,7 +67,11 @@ def Book_Issued(LendId, BookId, MemberId):
     conn.commit()
 
 def checkMember(user_id,user_name):
+    '''checking member in table or not'''
     return c.execute("SELECT MembersId FROM Members WHERE MembersId=? and `Member Name` =?", (user_id, user_name)).fetchone()
+
+
+
 
 
 

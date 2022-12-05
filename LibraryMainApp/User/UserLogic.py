@@ -15,4 +15,4 @@ def login():
         print(f"Uesr add user name: {newUserName} and user id: {newUserId[0]}")
         return newUserId[0]
 
-login()
+
